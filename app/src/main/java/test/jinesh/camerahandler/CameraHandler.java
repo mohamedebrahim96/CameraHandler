@@ -15,6 +15,7 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -292,7 +293,8 @@ public class CameraHandler extends Activity {
     }
 
     public Uri getOutputMediaFileUri(int type) {
-
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
         return Uri.fromFile(getOutputMediaFile(type));
     }
 
